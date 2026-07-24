@@ -67,12 +67,13 @@ body {
 }
 
 button {
-  padding: 14px 30px;
+  padding: 15px 34px;
   font-size: 17px;
-  border-radius: 10px;
+  font-weight: 600;
+  border-radius: 12px;
   cursor: pointer;
   margin: 10px;
-  transition: 0.3s;
+  transition: all 0.3s ease;
 }
 
 .primary {
@@ -83,6 +84,7 @@ button {
 
 .primary:hover {
   background: #0d47a1;
+  transform: translateY(-3px);
 }
 
 .secondary {
@@ -94,4 +96,50 @@ button {
 .secondary:hover {
   background: #1565c0;
   color: white;
+  transform: translateY(-3px);
+}
+
+.features {
+  padding: 80px 60px;
+  background: #ffffff;
+  text-align: center;
+}
+
+.features h2 {
+  font-size: 40px;
+  color: #1565c0;
+  margin-bottom: 50px;
+}
+
+.cards {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.card {
+  background: #f8fbff;
+  width: 320px;
+  padding: 30px;
+  border-radius: 18px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 14px 30px rgba(21,101,192,0.15);
+}
+
+.card h3 {
+  font-size: 24px;
+  color: #1565c0;
+  margin-bottom: 15px;
+}
+
+.card p {
+  color: #555;
+  line-height: 1.6;
+  font-size: 17px;
 }
