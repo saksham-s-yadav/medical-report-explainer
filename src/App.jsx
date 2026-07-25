@@ -76,7 +76,35 @@ function App() {
   </div>
 
 </section>
+<section className="upload">
 
+  <h2>Upload Your Medical Report</h2>
+
+  <p>
+    Upload your blood test, prescription or
+    health report to receive an AI-powered
+    explanation.
+  </p>
+
+  <div className="upload-box">
+
+  <div className="upload-icon">
+    📄
+  </div>
+
+  <p>Drag & Drop your Medical Report here</p>
+
+  <button className="primary">
+    Choose File
+  </button>
+
+  <p className="file-info">
+    Supported formats: PDF, JPG, PNG (Max 10 MB)
+  </p>
+
+</div>
+
+</section>
 </div>
   );
 }
