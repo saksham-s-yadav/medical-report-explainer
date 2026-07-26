@@ -1,6 +1,8 @@
+import { useState } from "react";
 import "./App.css";
 
 function App() {
+  const [selectedFile, setSelectedFile] = useState(null);
   return (
     <div className="app">
 
@@ -94,13 +96,45 @@ function App() {
 
   <p>Drag & Drop your Medical Report here</p>
 
-  <button className="primary">
-    Choose File
-  </button>
+  <input
+  type="file"
+  id="fileUpload"
+  accept=".pdf,.jpg,.jpeg,.png"
+  style={{ display: "none" }}
+  onChange={(e) => {
+  const file = e.target.files[0];
 
-  <p className="file-info">
-    Supported formats: PDF, JPG, PNG (Max 10 MB)
+  if (!file) return;
+
+  const allowedTypes = [
+    "application/pdf",
+    "image/jpeg",
+    "image/png",
+  ];
+
+  if (allowedTypes.includes(file.type)) {
+    setSelectedFile(file);
+  } else {
+    alert("Only PDF, JPG, and PNG files are allowed.");
+    e.target.value = "";
+    setSelectedFile(null);
+  }
+}}
+/>
+
+<label htmlFor="fileUpload" className="primary">
+  Choose File
+</label>
+
+{selectedFile && (
+  <p className="selected-file">
+    Selected File: {selectedFile.name}
   </p>
+)}
+
+<p className="file-info">
+  Supported formats: PDF, JPG, PNG (Max 10 MB)
+</p>
 
 </div>
 
