@@ -127,9 +127,25 @@ function App() {
 </label>
 
 {selectedFile && (
-  <p className="selected-file">
-    Selected File: {selectedFile.name}
-  </p>
+  <div className="selected-file">
+
+    <h4>Selected File</h4>
+
+    <p><strong>Name:</strong> {selectedFile.name}</p>
+
+    <p>
+      <strong>Size:</strong>{" "}
+      {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
+    </p>
+
+    <button
+      className="secondary"
+      onClick={() => setSelectedFile(null)}
+    >
+      Remove File
+    </button>
+
+  </div>
 )}
 
 <p className="file-info">
