@@ -2,6 +2,8 @@ import Features from "./components/Features";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
 import Upload from "./components/Upload";
+import Analysis from "./components/Analysis";
+import Loading from "./components/Loading";
 import "./App.css";
 
 function App() {
@@ -15,6 +17,10 @@ function App() {
       <Features />
 
       <Upload />
+
+      <Loading />
+
+      <Analysis />
 
 </div>
   );
