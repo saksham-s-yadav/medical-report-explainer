@@ -1,6 +1,6 @@
 import { useState } from "react";
 
-function Upload() {
+function Upload({ onAnalyze }) {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -25,10 +25,12 @@ function Upload() {
 
   return (
     <section className="upload">
+
       <h2>Upload Your Medical Report</h2>
+
       <p className="upload-description">
-  Upload your blood test, prescription, or health report and receive an AI-powered explanation in seconds.
-</p>
+        Upload your blood test, prescription, or health report and receive an AI-powered explanation in seconds.
+      </p>
 
       <input
         type="file"
@@ -40,34 +42,43 @@ function Upload() {
 
       <div className="upload-box">
 
-  <div className="upload-icon">
-    📄
-  </div>
+        <div className="upload-icon">📄</div>
 
-  <h3>Drag & Drop Your Medical Report</h3>
+        <h3>Drag & Drop Your Medical Report</h3>
 
-<p className="upload-text">
-  or click below to browse files
-</p>
+        <p className="upload-text">
+          or click below to browse files
+        </p>
 
-  <label htmlFor="fileUpload" className="primary">
-    Choose File
-  </label>
+        <label htmlFor="fileUpload" className="primary">
+          Choose File
+        </label>
 
-</div>
+      </div>
 
       {selectedFile && (
-  <div className="selected-file">
+        <div className="selected-file">
 
-    <div className="success-message">
-      ✅ File Selected Successfully
-    </div>
+          <div className="success-message">
+            ✅ File Selected Successfully
+          </div>
+
           <h4>Selected File</h4>
+
           <p><strong>Name:</strong> {selectedFile.name}</p>
+
           <p>
             <strong>Size:</strong>{" "}
             {(selectedFile.size / 1024 / 1024).toFixed(2)} MB
           </p>
+
+          <button
+            className="primary"
+            onClick={onAnalyze}
+            style={{ marginTop: "15px", marginRight: "10px" }}
+          >
+            Analyze Report
+          </button>
 
           <button
             className="secondary"
@@ -75,15 +86,16 @@ function Upload() {
           >
             Remove File
           </button>
+
         </div>
       )}
 
       <p className="file-info">
         Supported formats: PDF, JPG, PNG (Max 10 MB)
       </p>
+
     </section>
   );
 }
 
 export default Upload;
-
