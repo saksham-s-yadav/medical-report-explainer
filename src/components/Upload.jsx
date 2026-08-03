@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 
 function Upload({ onAnalyze }) {
   const [selectedFile, setSelectedFile] = useState(null);
@@ -22,7 +23,38 @@ function Upload({ onAnalyze }) {
       e.target.value = "";
     }
   };
+const handleUpload = async () => {
+  if (!selectedFile) {
+    alert("Please select a file first.");
+    return;
+  }
 
+  const formData = new FormData();
+  formData.append("report", selectedFile);
+
+  try {
+    const response = await axios.post(
+      "http://localhost:5001/analyze",
+      formData,
+      {
+        headers: {
+          "Content-Type": "multipart/form-data",
+        },
+      }
+    );
+
+    console.log(response.data);
+
+    alert(response.data.message);
+
+    if (onAnalyze) {
+      onAnalyze();
+    }
+  } catch (error) {
+    console.error(error);
+    alert("Upload failed.");
+  }
+};
   return (
     <section className="upload">
 
@@ -74,7 +106,7 @@ function Upload({ onAnalyze }) {
 
           <button
             className="primary"
-            onClick={onAnalyze}
+            onClick={handleUpload}
             style={{ marginTop: "15px", marginRight: "10px" }}
           >
             Analyze Report
