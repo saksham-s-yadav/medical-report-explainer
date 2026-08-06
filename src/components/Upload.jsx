@@ -43,9 +43,9 @@ const handleUpload = async () => {
       }
     );
 
-    console.log(response.data);
+    console.log(response.data.analysis);
 
-    alert(response.data.message);
+    alert(response.data.analysis);
 
     if (onAnalyze) {
       onAnalyze();
