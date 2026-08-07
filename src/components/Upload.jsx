@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 
-function Upload({ onAnalyze }) {
+function Upload({ setLoading, setAnalysis }) {
   const [selectedFile, setSelectedFile] = useState(null);
 
   const handleFileChange = (e) => {
@@ -29,6 +29,8 @@ const handleUpload = async () => {
     return;
   }
 
+  setLoading(true);
+
   const formData = new FormData();
   formData.append("report", selectedFile);
 
@@ -45,15 +47,14 @@ const handleUpload = async () => {
 
     console.log(response.data.analysis);
 
-    alert(response.data.analysis);
-
-    if (onAnalyze) {
-      onAnalyze();
-    }
+    setAnalysis(response.data.analysis);
   } catch (error) {
     console.error(error);
     alert("Upload failed.");
   }
+  finally {
+  setLoading(false);
+}
 };
   return (
     <section className="upload">

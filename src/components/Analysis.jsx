@@ -1,41 +1,28 @@
-function Analysis() {
+function Analysis({ analysis }) {
   return (
     <section className="analysis">
 
-      <h2>AI Analysis Result</h2>
+      <h2>🩺 AI Medical Report Analysis</h2>
 
       <div className="analysis-card">
 
         <div className="analysis-status">
-          🟢 Analysis Complete
+          ✅ Analysis Completed Successfully
         </div>
 
-        <h3>Medical Report Summary</h3>
+        <h3>AI Explanation</h3>
 
-        <p>
-          Your uploaded medical report has been analyzed successfully.
-          This is currently a sample result. In the final project,
-          AI will generate a real explanation based on your report.
-        </p>
+        <div className="analysis-content">
+          {analysis.split("\n").map((line, index) => (
+            <p key={index}>{line}</p>
+          ))}
+        </div>
 
-        <div className="analysis-points">
-
-          <div className="point">
-            <strong>Hemoglobin:</strong> Normal
-          </div>
-
-          <div className="point">
-            <strong>Blood Sugar:</strong> Slightly High
-          </div>
-
-          <div className="point">
-            <strong>Cholesterol:</strong> Normal
-          </div>
-
-          <div className="point">
-            <strong>Recommendation:</strong> Consult your doctor for proper interpretation.
-          </div>
-
+        <div className="disclaimer">
+          <strong>⚠ Disclaimer:</strong> This AI-generated explanation is for
+          educational purposes only and should not replace professional medical
+          advice. Please consult a qualified healthcare professional for an
+          accurate diagnosis.
         </div>
 
       </div>
