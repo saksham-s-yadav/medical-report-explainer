@@ -1,24 +1,56 @@
 const analyzeMedicalReport = async (reportText) => {
+  const text = reportText.toLowerCase();
+
+  let findings = [];
+
+  // Check whether common parameters exist in the extracted report
+  if (text.includes("hemoglobin")) {
+    findings.push("• Hemoglobin information was found in the report.");
+  }
+
+  if (text.includes("vitamin d")) {
+    findings.push("• Vitamin D information was found in the report.");
+  }
+
+  if (text.includes("blood sugar") || text.includes("glucose")) {
+    findings.push("• Blood sugar/glucose information was found in the report.");
+  }
+
+  if (text.includes("cholesterol")) {
+    findings.push("• Cholesterol information was found in the report.");
+  }
+
+  if (text.includes("platelet")) {
+    findings.push("• Platelet information was found in the report.");
+  }
+
+  if (findings.length === 0) {
+    findings.push("• The report was successfully read, but no common parameters were detected.");
+  }
+
   return `
 🩺 Medical Report Summary
 
-Patient appears to be in generally good health.
+The uploaded medical report was successfully processed.
 
 📋 Key Findings:
-• Blood sugar is within the normal range.
-• Hemoglobin level is normal.
-• White blood cell count is normal.
-• Cholesterol levels are acceptable.
-• No major abnormalities were detected.
+
+${findings.join("\n")}
+
+📄 Report Content:
+
+${reportText}
 
 💡 Recommendations:
-• Drink plenty of water.
-• Maintain a balanced diet.
-• Exercise for at least 30 minutes daily.
-• Follow up with your doctor if you experience any symptoms.
+
+• Review the reported values with a qualified healthcare professional.
+• Do not use this application as a substitute for medical diagnosis.
+• Follow your healthcare provider's advice regarding your report.
 
 ⚠️ Disclaimer:
-This is a mock AI response for development purposes only.
+
+This is a mock AI analysis for development purposes only.
+The system does not provide a medical diagnosis or determine whether a medical value is normal or abnormal.
 `;
 };
 

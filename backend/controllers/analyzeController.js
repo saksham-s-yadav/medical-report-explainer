@@ -1,4 +1,5 @@
 const { analyzeMedicalReport } = require("../services/aiService");
+const { extractTextFromPDF } = require("../utils/pdfExtractor");
 
 const analyzeReport = async (req, res) => {
   try {
@@ -9,15 +10,21 @@ const analyzeReport = async (req, res) => {
       });
     }
 
-    // Temporary sample text until OCR is added
-    const sampleReport = `
-Hemoglobin: 11.2 g/dL
-Vitamin D: 14 ng/mL
-Platelets: Normal
-Blood Sugar: 95 mg/dL
-`;
+    // Extract actual text from the uploaded PDF
+    const reportText = await extractTextFromPDF(req.file.path);
 
-    const aiResponse = await analyzeMedicalReport(sampleReport);
+    if (!reportText || reportText.trim().length === 0) {
+      return res.status(400).json({
+        success: false,
+        message: "No readable text found in the PDF.",
+      });
+    }
+
+    console.log("Extracted Report Text:");
+    console.log(reportText);
+
+    // Send extracted text for analysis
+    const aiResponse = await analyzeMedicalReport(reportText);
 
     res.json({
       success: true,
