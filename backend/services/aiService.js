@@ -1,31 +1,91 @@
 const analyzeMedicalReport = async (reportText) => {
-  const text = reportText.toLowerCase();
+  const findings = [];
 
-  let findings = [];
+  // Clean extracted PDF text
+  const cleanText = reportText
+    .replace(/\r/g, "")
+    .replace(/\t+/g, " ")
+    .replace(/ +/g, " ");
 
-  // Check whether common parameters exist in the extracted report
-  if (text.includes("hemoglobin")) {
-    findings.push("• Hemoglobin information was found in the report.");
-  }
+  // Helper function
+  const addFinding = (name, regex) => {
+    const match = cleanText.match(regex);
 
-  if (text.includes("vitamin d")) {
-    findings.push("• Vitamin D information was found in the report.");
-  }
+    if (match && match[1]) {
+      findings.push(`• ${name}: ${match[1].trim()}`);
+    }
+  };
 
-  if (text.includes("blood sugar") || text.includes("glucose")) {
-    findings.push("• Blood sugar/glucose information was found in the report.");
-  }
+  // Hemoglobin
+  addFinding(
+    "Hemoglobin",
+    /hemoglobin[\s:]*(?:[:\-]|is)?\s*(\d+(?:\.\d+)?\s*(?:g\/dL|g\/dl)?)/i
+  );
 
-  if (text.includes("cholesterol")) {
-    findings.push("• Cholesterol information was found in the report.");
-  }
+  // Vitamin D
+  addFinding(
+    "Vitamin D",
+    /vitamin\s*d[\s:]*(?:[:\-]|is)?\s*(\d+(?:\.\d+)?\s*(?:ng\/mL|ng\/ml)?)/i
+  );
 
-  if (text.includes("platelet")) {
-    findings.push("• Platelet information was found in the report.");
-  }
+  // Blood Sugar / Glucose
+  addFinding(
+    "Blood Sugar",
+    /(?:blood\s*sugar|glucose)[\s:]*(?:[:\-]|is)?\s*(\d+(?:\.\d+)?\s*(?:mg\/dL|mg\/dl)?)/i
+  );
 
+  // Cholesterol
+addFinding(
+  "Total Cholesterol",
+  /(\d+(?:\.\d+)?)\s+Cholesterol\s+Total/i
+);
+
+  // Platelets
+  addFinding(
+    "Platelets",
+    /platelets?[\s:]*(?:[:\-]|is)?\s*(\d+(?:\.\d+)?(?:\s*(?:\/µL|\/uL|\/μL))?)/i
+  );
+// Total Cholesterol
+addFinding(
+  "Total Cholesterol",
+  /(\d+(?:\.\d+)?)\s+Cholesterol\s+Total/i
+);
+
+// Triglycerides
+addFinding(
+  "Triglycerides",
+  /(\d+(?:\.\d+)?)\s+Triglycerides/i
+);
+
+// HDL Cholesterol
+addFinding(
+  "HDL Cholesterol",
+  /(\d+(?:\.\d+)?)\s+HDL\s+Cholesterol/i
+);
+
+// LDL Cholesterol
+addFinding(
+  "LDL Cholesterol",
+  /(\d+(?:\.\d+)?)\s+LDL\s+Cholesterol/i
+);
+
+// VLDL Cholesterol
+addFinding(
+  "VLDL Cholesterol",
+  /(\d+(?:\.\d+)?)\s+VLDL\s+Cholesterol/i
+);
+
+// Non-HDL Cholesterol
+addFinding(
+  "Non-HDL Cholesterol",
+  /(\d+(?:\.\d+)?)\s+Non-HDL\s+Cholesterol/i
+);
+
+  // If nothing was detected
   if (findings.length === 0) {
-    findings.push("• The report was successfully read, but no common parameters were detected.");
+    findings.push(
+      "• No supported medical parameters were detected in the extracted text."
+    );
   }
 
   return `
@@ -33,13 +93,9 @@ const analyzeMedicalReport = async (reportText) => {
 
 The uploaded medical report was successfully processed.
 
-📋 Key Findings:
+📋 Detected Parameters:
 
 ${findings.join("\n")}
-
-📄 Report Content:
-
-${reportText}
 
 💡 Recommendations:
 
