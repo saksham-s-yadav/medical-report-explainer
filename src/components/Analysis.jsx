@@ -1,4 +1,6 @@
 function Analysis({ analysis }) {
+  const lines = analysis ? analysis.split("\n") : [];
+
   return (
     <section className="analysis">
 
@@ -10,12 +12,40 @@ function Analysis({ analysis }) {
           ✅ Analysis Completed Successfully
         </div>
 
-        <h3>AI Explanation</h3>
+        <h3>📋 Report Findings</h3>
 
         <div className="analysis-content">
-          {analysis.split("\n").map((line, index) => (
-            <p key={index}>{line}</p>
-          ))}
+          {lines.map((line, index) => {
+            const trimmedLine = line.trim();
+
+            if (!trimmedLine) {
+              return <div key={index} style={{ height: "8px" }} />;
+            }
+
+            // Section headings
+            if (
+              trimmedLine.includes("Medical Report Summary") ||
+              trimmedLine.includes("Detected Parameters") ||
+              trimmedLine.includes("Recommendations")
+            ) {
+              return (
+                <h4 key={index} style={{ marginTop: "18px" }}>
+                  {trimmedLine}
+                </h4>
+              );
+            }
+
+            // Detected parameter lines
+            if (trimmedLine.startsWith("•")) {
+              return (
+                <div className="analysis-point" key={index}>
+                  {trimmedLine}
+                </div>
+              );
+            }
+
+            return <p key={index}>{trimmedLine}</p>;
+          })}
         </div>
 
         <div className="disclaimer">
