@@ -13,13 +13,17 @@ body {
   min-height: 100vh;
 }
 
+/* ==========================
+   Navbar
+========================== */
+
 .navbar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 25px 70px;
   background: white;
-  box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
 }
 
 .navbar h2 {
@@ -41,6 +45,10 @@ body {
 .nav-links a:hover {
   color: #1565c0;
 }
+
+/* ==========================
+   Hero Section
+========================== */
 
 .hero {
   text-align: center;
@@ -77,27 +85,31 @@ button {
 }
 
 .primary {
-  background: #1565c0;
+  background: #2563eb;
   color: white;
   border: none;
 }
 
 .primary:hover {
-  background: #0d47a1;
+  background: #1d4ed8;
   transform: translateY(-3px);
 }
 
 .secondary {
   background: white;
-  color: #1565c0;
-  border: 2px solid #1565c0;
+  color: #2563eb;
+  border: 2px solid #2563eb;
 }
 
 .secondary:hover {
-  background: #1565c0;
+  background: #2563eb;
   color: white;
   transform: translateY(-3px);
 }
+
+/* ==========================
+   Features Section
+========================== */
 
 .features {
   padding: 80px 60px;
@@ -123,13 +135,13 @@ button {
   width: 320px;
   padding: 30px;
   border-radius: 18px;
-  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
 }
 
 .card:hover {
   transform: translateY(-10px);
-  box-shadow: 0 14px 30px rgba(21,101,192,0.15);
+  box-shadow: 0 14px 30px rgba(21, 101, 192, 0.15);
 }
 
 .card h3 {
@@ -144,83 +156,6 @@ button {
   font-size: 17px;
 }
 
-.upload {
-  padding: 90px 20px;
-  text-align: center;
-  background: #eef7ff;
-}
-
-.upload h2 {
-  font-size: 40px;
-  color: #1565c0;
-  margin-bottom: 20px;
-}
-
-.upload p {
-  font-size: 20px;
-  color: #555;
-  max-width: 700px;
-  margin: auto;
-  line-height: 1.6;
-}
-
-.upload-box {
-  margin: 50px auto;
-  max-width: 650px;
-  padding: 50px;
-  border: 3px dashed #1565c0;
-  border-radius: 20px;
-  background: white;
-  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
-  transition: all 0.3s ease;
-}
-
-.upload-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 16px 35px rgba(21,101,192,0.15);
-}
-
-.upload-icon {
-  font-size: 60px;
-  margin-bottom: 20px;
-}
-
-.upload-box p {
-  margin-bottom: 25px;
-  font-size: 18px;
-}
-
-.file-info {
-  margin-top: 20px;
-  color: #777;
-  font-size: 15px;
-}
-.selected-file {
-  margin: 25px auto;
-  max-width: 500px;
-  background: #eaf4ff;
-  border: 2px solid #1565c0;
-  border-radius: 15px;
-  padding: 20px;
-  text-align: left;
-  box-shadow: 0 8px 20px rgba(21, 101, 192, 0.1);
-}
-
-.selected-file h4 {
-  color: #1565c0;
-  margin-bottom: 12px;
-  font-size: 22px;
-}
-
-.selected-file p {
-  margin: 8px 0;
-  color: #444;
-  font-size: 16px;
-}
-
-.selected-file button {
-  margin-top: 15px;
-}
 /* ==========================
    Upload Section
 ========================== */
@@ -237,7 +172,8 @@ button {
   margin-bottom: 15px;
 }
 
-.upload > p {
+.upload > p,
+.upload-description {
   color: #555;
   font-size: 1.05rem;
   max-width: 650px;
@@ -247,105 +183,25 @@ button {
 
 .upload-box {
   max-width: 700px;
-  margin: auto;
+  margin: 30px auto;
   padding: 45px 30px;
   background: white;
-  border: 3px dashed #3b82f6;
-  border-radius: 22px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  border: 2px dashed #3b82f6;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
   transition: 0.3s ease;
 }
 
 .upload-box:hover {
+  background: #eef6ff;
   transform: translateY(-5px);
-  box-shadow: 0 20px 45px rgba(59,130,246,0.15);
+  box-shadow: 0 20px 45px rgba(59, 130, 246, 0.15);
 }
 
 .upload-icon {
-  font-size: 70px;
-  margin-bottom: 20px;
-}
-
-.upload-box p {
-  color: #666;
-  margin-bottom: 18px;
-  font-size: 1rem;
-}
-
-.primary,
-.secondary {
-  display: inline-block;
-  padding: 14px 30px;
-  border-radius: 10px;
-  cursor: pointer;
-  font-weight: 600;
-  transition: 0.3s;
-  border: none;
-  text-decoration: none;
-}
-
-.primary {
-  background: #2563eb;
-  color: white;
-}
-
-.primary:hover {
-  background: #1d4ed8;
-  transform: scale(1.05);
-}
-
-.secondary {
-  margin-top: 15px;
-  background: white;
-  border: 2px solid #2563eb;
-  color: #2563eb;
-}
-
-.secondary:hover {
-  background: #2563eb;
-  color: white;
-}
-
-.selected-file {
-  margin-top: 30px;
-  padding: 20px;
-  border-radius: 15px;
-  background: #eef6ff;
-  border: 1px solid #cfe3ff;
-  animation: fadeIn 0.4s ease;
-}
-
-.selected-file h4 {
-  color: #2563eb;
-  margin-bottom: 12px;
-}
-
-.selected-file p {
-  margin: 8px 0;
-}
-
-.file-info {
-  margin-top: 20px;
-  color: #888;
-  font-size: 0.9rem;
-}
-
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
-.upload-description {
-  color: #6b7280;
-  font-size: 1.05rem;
-  max-width: 650px;
-  margin: 15px auto 40px;
-  line-height: 1.7;
+  font-size: 60px;
+  margin-bottom: 15px;
 }
 
 .upload-box h3 {
@@ -354,43 +210,43 @@ button {
   margin-bottom: 10px;
 }
 
+.upload-box p,
 .upload-text {
-  color: #6b7280;
-  margin-bottom: 25px;
+  color: #666;
+  margin-bottom: 20px;
   font-size: 1rem;
 }
-/* ==========================
-   Responsive
-========================== */
 
-@media (max-width: 768px) {
-
-  .upload {
-    padding: 70px 15px;
-  }
-
-  .upload h2 {
-  font-size: 2.3rem;
-  font-weight: 700;
-  color: #1d4ed8;
-  text-align: center;
-  margin-bottom: 18px;
+.file-info {
+  margin-top: 20px;
+  color: #888;
+  font-size: 0.9rem;
 }
 
-  .upload-box {
-    padding: 30px 20px;
-  }
-
-  .upload-icon {
-    font-size: 55px;
-  }
-
-  .primary,
-  .secondary {
-    width: 100%;
-    margin-top: 10px;
-  }
+.selected-file {
+  margin: 30px auto 0;
+  max-width: 500px;
+  padding: 20px;
+  border-radius: 15px;
+  background: #eef6ff;
+  border: 1px solid #cfe3ff;
+  text-align: left;
+  animation: fadeIn 0.4s ease;
 }
+
+.selected-file h4 {
+  color: #2563eb;
+  margin-bottom: 12px;
+  font-size: 20px;
+}
+
+.selected-file p {
+  margin: 8px 0;
+  color: #444;
+}
+
+/* Success Message */
+
 .success-message {
   background: #e8f9ee;
   color: #15803d;
@@ -402,95 +258,127 @@ button {
   text-align: center;
 }
 
-.upload-box {
-  border: 2px dashed #3b82f6;
-  border-radius: 18px;
-  padding: 40px;
-  text-align: center;
-  margin: 30px auto;
-  max-width: 650px;
-  background: #f8fbff;
-  transition: 0.3s;
-}
-
-.upload-box:hover {
-  background: #eef6ff;
-  transform: translateY(-3px);
-}
-
-.upload-icon {
-  font-size: 60px;
-  margin-bottom: 15px;
-}
-
-.upload-box h3 {
-  color: #1e3a8a;
-  margin-bottom: 10px;
-}
-
-.upload-box p {
-  color: #666;
-  margin-bottom: 20px;
-}
 /* ==========================
    Analysis Section
 ========================== */
 
 .analysis {
-  padding: 100px 20px;
-  background: #f8fbff;
-  text-align: center;
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 40px 20px;
 }
 
 .analysis h2 {
-  font-size: 2.4rem;
-  color: #1e3a8a;
-  margin-bottom: 40px;
+  text-align: center;
+  color: #2563eb;
+  margin-bottom: 30px;
+  font-size: 2.2rem;
 }
 
 .analysis-card {
-  max-width: 800px;
-  margin: auto;
   background: white;
-  padding: 35px;
   border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
-  text-align: left;
+  padding: 35px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  border: 1px solid #e5e7eb;
 }
+
+/* Analysis Status */
 
 .analysis-status {
   display: inline-block;
-  background: #e8f9ee;
-  color: #15803d;
+  background: #dcfce7;
+  color: #166534;
   padding: 10px 18px;
-  border-radius: 30px;
+  border-radius: 999px;
   font-weight: 600;
-  margin-bottom: 20px;
-}
-
-.analysis-card h3 {
-  color: #2563eb;
-  margin-bottom: 15px;
-}
-
-.analysis-card p {
-  color: #555;
-  line-height: 1.7;
   margin-bottom: 25px;
 }
 
-.analysis-points {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+/* Analysis Heading */
+
+.analysis-card h3 {
+  color: #1f2937;
+  margin-bottom: 20px;
+  font-size: 1.4rem;
 }
 
-.point {
-  background: #eef6ff;
-  padding: 15px;
-  border-left: 5px solid #2563eb;
-  border-radius: 10px;
+/* Analysis Content */
+
+.analysis-content {
+  margin-top: 20px;
+  background: #f8fafc;
+  padding: 22px;
+  border-radius: 14px;
+  line-height: 1.7;
+  color: #374151;
 }
+
+/* Section headings inside analysis */
+
+.analysis-content h4 {
+  font-size: 18px;
+  font-weight: 700;
+  color: #1f3c88;
+  margin-top: 22px;
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+/* Detected parameter cards */
+
+.analysis-point {
+  display: flex;
+  align-items: flex-start;
+  background: white;
+  border: 1px solid #e5e7eb;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  padding: 13px 15px;
+  margin: 10px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.03);
+  transition: 0.2s ease;
+}
+
+.analysis-point:hover {
+  transform: translateX(3px);
+  box-shadow: 0 5px 12px rgba(37, 99, 235, 0.08);
+}
+
+/* Normal text */
+
+.analysis-content p {
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 8px 0;
+}
+
+/* Disclaimer */
+
+.disclaimer {
+  margin-top: 25px;
+  padding: 16px;
+  border-left: 5px solid #e0a000;
+  background: #fff8df;
+  border-radius: 10px;
+  color: #5f4b00;
+  line-height: 1.6;
+  font-size: 14px;
+}
+
+.disclaimer strong {
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* ==========================
+   Loading Section
+========================== */
+
 .loading {
   padding: 80px 20px;
   display: flex;
@@ -504,7 +392,7 @@ button {
   border-radius: 22px;
   padding: 45px;
   text-align: center;
-  box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
 }
 
 .loading-icon {
@@ -535,6 +423,22 @@ button {
   font-weight: 500;
 }
 
+/* ==========================
+   Animations
+========================== */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @keyframes pulse {
   0% {
     transform: scale(1);
@@ -548,90 +452,75 @@ button {
     transform: scale(1);
   }
 }
-.analysis {
-  max-width: 900px;
-  margin: 60px auto;
-  padding: 20px;
-}
 
-.analysis h2 {
-  text-align: center;
-  color: #2563eb;
-  margin-bottom: 30px;
-  font-size: 2rem;
-}
+/* ==========================
+   Responsive Design
+========================== */
 
-.analysis-card {
-  background: white;
-  border-radius: 18px;
-  padding: 30px;
-  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
-  border: 1px solid #e5e7eb;
-}
+@media (max-width: 768px) {
 
-.analysis-status {
-  display: inline-block;
-  background: #dcfce7;
-  color: #166534;
-  padding: 8px 16px;
-  border-radius: 999px;
-  font-weight: 600;
-  margin-bottom: 20px;
-}
+  .navbar {
+    padding: 20px;
+    flex-direction: column;
+    gap: 15px;
+  }
 
-.analysis-card h3 {
-  color: #1f2937;
-  margin-bottom: 20px;
-}
+  .nav-links {
+    gap: 20px;
+  }
 
-.analysis-content {
-  background: #f8fafc;
-  padding: 20px;
-  border-radius: 12px;
-  line-height: 1.8;
-  color: #374151;
-  white-space: pre-wrap;
-}
+  .hero {
+    padding: 60px 15px;
+  }
 
-.analysis-content p {
-  margin-bottom: 12px;
-}
+  .hero h1 {
+    font-size: 40px;
+  }
 
-.disclaimer {
-  margin-top: 25px;
-  padding: 15px;
-  background: #fef3c7;
-  border-left: 5px solid #f59e0b;
-  border-radius: 10px;
-  color: #78350f;
-  line-height: 1.6;
-}
+  .hero p {
+    font-size: 18px;
+  }
 
-/* Day 19 - Analysis Improvements */
+  .features {
+    padding: 60px 20px;
+  }
 
-.analysis-content {
-  margin-top: 20px;
-}
+  .features h2 {
+    font-size: 32px;
+  }
 
-.analysis-content h4 {
-  font-size: 18px;
-  margin-bottom: 10px;
-}
+  .upload {
+    padding: 70px 15px;
+  }
 
-.analysis-point {
-  background: #f5f7fa;
-  border-left: 4px solid #4f46e5;
-  padding: 12px 15px;
-  margin: 8px 0;
-  border-radius: 8px;
-  font-weight: 500;
-}
+  .upload h2 {
+    font-size: 2.3rem;
+  }
 
-.disclaimer {
-  margin-top: 25px;
-  padding: 15px;
-  background: #fff8e1;
-  border-radius: 8px;
-  font-size: 14px;
-  line-height: 1.5;
+  .upload-box {
+    padding: 30px 20px;
+  }
+
+  .upload-icon {
+    font-size: 55px;
+  }
+
+  .primary,
+  .secondary {
+    width: 100%;
+    margin-top: 10px;
+  }
+
+  .analysis {
+    margin: 30px auto;
+    padding: 20px 15px;
+  }
+
+  .analysis-card {
+    padding: 22px 15px;
+  }
+
+  .analysis h2 {
+    font-size: 1.8rem;
+  }
 }

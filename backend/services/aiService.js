@@ -34,11 +34,7 @@ const analyzeMedicalReport = async (reportText) => {
     /(?:blood\s*sugar|glucose)[\s:]*(?:[:\-]|is)?\s*(\d+(?:\.\d+)?\s*(?:mg\/dL|mg\/dl)?)/i
   );
 
-  // Cholesterol
-addFinding(
-  "Total Cholesterol",
-  /(\d+(?:\.\d+)?)\s+Cholesterol\s+Total/i
-);
+  
 
   // Platelets
   addFinding(
@@ -103,10 +99,7 @@ ${findings.join("\n")}
 • Do not use this application as a substitute for medical diagnosis.
 • Follow your healthcare provider's advice regarding your report.
 
-⚠️ Disclaimer:
 
-This is a mock AI analysis for development purposes only.
-The system does not provide a medical diagnosis or determine whether a medical value is normal or abnormal.
 `;
 };
 

@@ -8,51 +8,86 @@ function Analysis({ analysis }) {
 
       <div className="analysis-card">
 
+        {/* Analysis Status */}
         <div className="analysis-status">
-          ✅ Analysis Completed Successfully
+          <span>✅</span>
+          <span>Analysis Completed Successfully</span>
         </div>
 
-        <h3>📋 Report Findings</h3>
-
+        {/* Main Content */}
         <div className="analysis-content">
+
           {lines.map((line, index) => {
             const trimmedLine = line.trim();
 
             if (!trimmedLine) {
-              return <div key={index} style={{ height: "8px" }} />;
+              return <div key={index} className="analysis-space" />;
             }
 
-            // Section headings
-            if (
-              trimmedLine.includes("Medical Report Summary") ||
-              trimmedLine.includes("Detected Parameters") ||
-              trimmedLine.includes("Recommendations")
-            ) {
+            /* Medical Report Summary */
+            if (trimmedLine.includes("Medical Report Summary")) {
               return (
-                <h4 key={index} style={{ marginTop: "18px" }}>
-                  {trimmedLine}
-                </h4>
-              );
-            }
-
-            // Detected parameter lines
-            if (trimmedLine.startsWith("•")) {
-              return (
-                <div className="analysis-point" key={index}>
-                  {trimmedLine}
+                <div className="analysis-section-title" key={index}>
+                  🩺 Medical Report Summary
                 </div>
               );
             }
 
-            return <p key={index}>{trimmedLine}</p>;
+            /* Detected Parameters */
+            if (trimmedLine.includes("Detected Parameters")) {
+              return (
+                <div className="analysis-section-title" key={index}>
+                  📋 Detected Parameters
+                </div>
+              );
+            }
+
+            /* Recommendations */
+            if (trimmedLine.includes("Recommendations")) {
+              return (
+                <div className="analysis-section-title" key={index}>
+                  💡 Recommendations
+                </div>
+              );
+            }
+
+            /* Disclaimer coming from backend */
+            if (trimmedLine.includes("Disclaimer")) {
+              return null;
+            }
+
+            /* Parameter / recommendation bullet */
+            if (trimmedLine.startsWith("•")) {
+              const text = trimmedLine.replace("•", "").trim();
+
+              return (
+                <div className="analysis-point" key={index}>
+                  <span className="point-icon">•</span>
+                  <span>{text}</span>
+                </div>
+              );
+            }
+
+            /* Normal text */
+            return (
+              <p className="analysis-text" key={index}>
+                {trimmedLine}
+              </p>
+            );
           })}
+
         </div>
 
+        {/* Disclaimer */}
         <div className="disclaimer">
-          <strong>⚠ Disclaimer:</strong> This AI-generated explanation is for
-          educational purposes only and should not replace professional medical
-          advice. Please consult a qualified healthcare professional for an
-          accurate diagnosis.
+          <strong>⚠️ Medical Disclaimer</strong>
+
+          <p>
+            This AI-generated explanation is intended for educational
+            purposes only and should not replace professional medical advice.
+            Please consult a qualified healthcare professional for accurate
+            interpretation, diagnosis, or treatment.
+          </p>
         </div>
 
       </div>
