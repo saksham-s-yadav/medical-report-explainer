@@ -8,13 +8,12 @@ function Analysis({ analysis }) {
 
       <div className="analysis-card">
 
-        {/* Analysis Status */}
         <div className="analysis-status">
-          <span>✅</span>
-          <span>Analysis Completed Successfully</span>
+          ✅ Analysis Completed Successfully
         </div>
 
-        {/* Main Content */}
+        <h3>📋 Report Findings</h3>
+
         <div className="analysis-content">
 
           {lines.map((line, index) => {
@@ -24,51 +23,44 @@ function Analysis({ analysis }) {
               return <div key={index} className="analysis-space" />;
             }
 
-            /* Medical Report Summary */
-            if (trimmedLine.includes("Medical Report Summary")) {
+            // Section headings
+            if (
+              trimmedLine.includes("Medical Report Summary") ||
+              trimmedLine.includes("Detected Parameters") ||
+              trimmedLine.includes("Recommendations")
+            ) {
               return (
-                <div className="analysis-section-title" key={index}>
-                  🩺 Medical Report Summary
-                </div>
+                <h4 key={index} className="analysis-section-title">
+                  {trimmedLine}
+                </h4>
               );
             }
 
-            /* Detected Parameters */
-            if (trimmedLine.includes("Detected Parameters")) {
-              return (
-                <div className="analysis-section-title" key={index}>
-                  📋 Detected Parameters
-                </div>
-              );
-            }
-
-            /* Recommendations */
-            if (trimmedLine.includes("Recommendations")) {
-              return (
-                <div className="analysis-section-title" key={index}>
-                  💡 Recommendations
-                </div>
-              );
-            }
-
-            /* Disclaimer coming from backend */
-            if (trimmedLine.includes("Disclaimer")) {
-              return null;
-            }
-
-            /* Parameter / recommendation bullet */
+            // Detected parameter
             if (trimmedLine.startsWith("•")) {
-              const text = trimmedLine.replace("•", "").trim();
-
               return (
                 <div className="analysis-point" key={index}>
                   <span className="point-icon">•</span>
-                  <span>{text}</span>
+                  <span>{trimmedLine.substring(1).trim()}</span>
                 </div>
               );
             }
 
-            /* Normal text */
+            // Explanation text
+            if (trimmedLine.startsWith("Explanation:")) {
+              return (
+                <div className="explanation-box" key={index}>
+                  <span className="explanation-label">
+                    💡 Explanation
+                  </span>
+
+                  <p>
+                    {trimmedLine.replace("Explanation:", "").trim()}
+                  </p>
+                </div>
+              );
+            }
+
             return (
               <p className="analysis-text" key={index}>
                 {trimmedLine}
@@ -78,15 +70,14 @@ function Analysis({ analysis }) {
 
         </div>
 
-        {/* Disclaimer */}
         <div className="disclaimer">
-          <strong>⚠️ Medical Disclaimer</strong>
+          <strong>⚠ Medical Disclaimer</strong>
 
           <p>
             This AI-generated explanation is intended for educational
-            purposes only and should not replace professional medical advice.
-            Please consult a qualified healthcare professional for accurate
-            interpretation, diagnosis, or treatment.
+            purposes only and should not replace professional medical
+            advice. Please consult a qualified healthcare professional
+            for accurate interpretation, diagnosis, or treatment.
           </p>
         </div>
 

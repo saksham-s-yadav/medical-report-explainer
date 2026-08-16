@@ -524,3 +524,92 @@ button {
     font-size: 1.8rem;
   }
 }
+
+/* ==========================
+   Day 22 - Explanation Styling
+========================== */
+
+.explanation-box {
+  margin: 8px 0 18px 15px;
+  padding: 16px 18px;
+  background: #f8fbff;
+  border-left: 4px solid #3b82f6;
+  border-radius: 10px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.explanation-label {
+  display: block;
+  color: #1e40af;
+  font-size: 14px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.explanation-box p {
+  margin: 0;
+  color: #4b5563;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+
+/* Improve parameter cards */
+
+.analysis-point {
+  background: white;
+  border: 1px solid #dbeafe;
+  border-left: 4px solid #2563eb;
+  border-radius: 10px;
+  padding: 14px 16px;
+  margin: 10px 0 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: #1f2937;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.04);
+  transition: all 0.25s ease;
+}
+
+.analysis-point:hover {
+  transform: translateX(3px);
+  box-shadow: 0 6px 16px rgba(37, 99, 235, 0.10);
+}
+
+
+/* Bullet icon */
+
+.point-icon {
+  color: #2563eb;
+  font-weight: bold;
+  margin-right: 5px;
+}
+
+
+/* Normal analysis text */
+
+.analysis-text {
+  color: #4b5563;
+  font-size: 15px;
+  line-height: 1.7;
+  margin: 10px 0;
+}
+
+
+/* Section headings */
+
+.analysis-section-title {
+  color: #1e3a8a;
+  font-size: 19px;
+  font-weight: 700;
+  margin-top: 28px;
+  margin-bottom: 15px;
+  padding-bottom: 9px;
+  border-bottom: 1px solid #dbeafe;
+}
+
+
+/* Empty space between sections */
+
+.analysis-space {
+  height: 6px;
+}
