@@ -613,3 +613,99 @@ button {
 .analysis-space {
   height: 6px;
 }
+
+/* ==========================
+   Day 23 - Reference & Status Styling
+========================== */
+
+/* Reference Range */
+
+.reference-range {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 8px 0 5px 15px;
+  padding: 10px 14px;
+  background: #f8fafc;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.reference-label {
+  font-weight: 600;
+  color: #475569;
+}
+
+.reference-value {
+  color: #64748b;
+  font-weight: 500;
+}
+
+
+/* Status Box */
+
+.status-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 5px 0 10px 15px;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 14px;
+}
+
+.status-label {
+  font-weight: 700;
+}
+
+.status-value {
+  font-weight: 600;
+}
+
+
+/* Normal / Within Range */
+
+.status-normal {
+  background: #ecfdf5;
+  border: 1px solid #bbf7d0;
+  color: #166534;
+}
+
+
+/* Above Range */
+
+.status-high {
+  background: #fff7ed;
+  border: 1px solid #fed7aa;
+  color: #c2410c;
+}
+
+
+/* Below Range */
+
+.status-low {
+  background: #eff6ff;
+  border: 1px solid #bfdbfe;
+  color: #1d4ed8;
+}
+
+
+/* Reference Range Not Detected */
+
+.status-neutral {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  color: #64748b;
+}
+
+
+/* Mobile */
+
+@media (max-width: 768px) {
+  .reference-range,
+  .status-box {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+  }
+}

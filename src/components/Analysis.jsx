@@ -46,6 +46,40 @@ function Analysis({ analysis }) {
               );
             }
 
+            // Reference range
+if (trimmedLine.startsWith("Reference Range:")) {
+  return (
+    <div className="reference-range" key={index}>
+      <span className="reference-label">📏 Reference Range</span>
+      <span className="reference-value">
+        {trimmedLine.replace("Reference Range:", "").trim()}
+      </span>
+    </div>
+  );
+}
+
+// Status
+if (trimmedLine.startsWith("Status:")) {
+  const status = trimmedLine.replace("Status:", "").trim();
+
+  let statusClass = "status-neutral";
+
+  if (status.includes("Within")) {
+    statusClass = "status-normal";
+  } else if (status.includes("Above")) {
+    statusClass = "status-high";
+  } else if (status.includes("Below")) {
+    statusClass = "status-low";
+  }
+
+  return (
+    <div className={`status-box ${statusClass}`} key={index}>
+      <span className="status-label">Status</span>
+      <span className="status-value">{status}</span>
+    </div>
+  );
+}
+
             // Explanation text
             if (trimmedLine.startsWith("Explanation:")) {
               return (
